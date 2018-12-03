@@ -54,6 +54,7 @@ namespace TrashCollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Message = createNewCustomer.FirstName + " " + createNewCustomer.LastName + " successfully registered.";
 
             return View(createNewCustomer);
         }
@@ -122,6 +123,40 @@ namespace TrashCollector.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        //Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(CreateNewCustomer createNewCustomer)
+        {
+            var newEmployee = db.CreateNewCustomers.Single(e => e.Username == createNewCustomer.Username && e.Password == createNewCustomer.Password);
+            if (newEmployee != null)
+            {
+                Session["Id"] = newEmployee.Id.ToString();
+                Session["Username"] = newEmployee.Username.ToString();
+                return RedirectToAction("LoggedIn");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Username or Password is wrong");
+            }
+            return View();
+        }
+
+       public ActionResult LoggedIn()
+        {
+            if (Session["Id"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
     }
 }

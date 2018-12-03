@@ -281,6 +281,8 @@
     <Content Include="Views\CreateNewCustomers\Details.cshtml" />
     <Content Include="Views\CreateNewCustomers\Edit.cshtml" />
     <Content Include="Views\CreateNewCustomers\Index.cshtml" />
+    <Content Include="Views\CreateNewCustomers\Login.cshtml" />
+    <Content Include="Views\CreateNewCustomers\LoggedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
