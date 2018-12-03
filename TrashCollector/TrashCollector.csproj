@@ -175,6 +175,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CreateNewCustomersController.cs" />
+    <Compile Include="Controllers\CreateNewEmployeesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -283,6 +284,13 @@
     <Content Include="Views\CreateNewCustomers\Index.cshtml" />
     <Content Include="Views\CreateNewCustomers\Login.cshtml" />
     <Content Include="Views\CreateNewCustomers\LoggedIn.cshtml" />
+    <Content Include="Views\CreateNewEmployees\Create.cshtml" />
+    <Content Include="Views\CreateNewEmployees\Delete.cshtml" />
+    <Content Include="Views\CreateNewEmployees\Details.cshtml" />
+    <Content Include="Views\CreateNewEmployees\Edit.cshtml" />
+    <Content Include="Views\CreateNewEmployees\Index.cshtml" />
+    <Content Include="Views\CreateNewEmployees\Login.cshtml" />
+    <Content Include="Views\CreateNewEmployees\LoggedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

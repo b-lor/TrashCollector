@@ -10,108 +10,108 @@ using TrashCollector.Models;
 
 namespace TrashCollector.Controllers
 {
-    public class CreateNewCustomersController : Controller
+    public class CreateNewEmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CreateNewCustomers
+        // GET: CreateNewEmployees
         public ActionResult Index()
         {
-            return View(db.CreateNewCustomers.ToList());
+            return View(db.CreateNewEmployees.ToList());
         }
 
-        // GET: CreateNewCustomers/Details/5
+        // GET: CreateNewEmployees/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CreateNewCustomer createNewCustomer = db.CreateNewCustomers.Find(id);
-            if (createNewCustomer == null)
+            CreateNewEmployee createNewEmployee = db.CreateNewEmployees.Find(id);
+            if (createNewEmployee == null)
             {
                 return HttpNotFound();
             }
-            return View(createNewCustomer);
+            return View(createNewEmployee);
         }
 
-        // GET: CreateNewCustomers/Create
+        // GET: CreateNewEmployees/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CreateNewCustomers/Create
+        // POST: CreateNewEmployees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Address1,Address2,City,State,ZipCode,Username,Email,Password,ConfirmPassword")] CreateNewCustomer createNewCustomer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,ZipCode,Username,Email,Password,ConfirmPassword")] CreateNewEmployee createNewEmployee)
         {
             if (ModelState.IsValid)
             {
-                db.CreateNewCustomers.Add(createNewCustomer);
+                db.CreateNewEmployees.Add(createNewEmployee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Message = createNewCustomer.FirstName + " " + createNewCustomer.LastName + " successfully registered.";
+            ViewBag.Message = createNewEmployee.FirstName + " " + createNewEmployee.LastName + " successfully registered.";
 
-            return View(createNewCustomer);
+            return View(createNewEmployee);
         }
 
-        // GET: CreateNewCustomers/Edit/5
+        // GET: CreateNewEmployees/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CreateNewCustomer createNewCustomer = db.CreateNewCustomers.Find(id);
-            if (createNewCustomer == null)
+            CreateNewEmployee createNewEmployee = db.CreateNewEmployees.Find(id);
+            if (createNewEmployee == null)
             {
                 return HttpNotFound();
             }
-            return View(createNewCustomer);
+            return View(createNewEmployee);
         }
 
-        // POST: CreateNewCustomers/Edit/5
+        // POST: CreateNewEmployees/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Address1,Address2,City,State,ZipCode,Username,Email,Password,ConfirmPassword")] CreateNewCustomer createNewCustomer)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,ZipCode,Username,Email,Password,ConfirmPassword")] CreateNewEmployee createNewEmployee)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(createNewCustomer).State = EntityState.Modified;
+                db.Entry(createNewEmployee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(createNewCustomer);
+            return View(createNewEmployee);
         }
 
-        // GET: CreateNewCustomers/Delete/5
+        // GET: CreateNewEmployees/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CreateNewCustomer createNewCustomer = db.CreateNewCustomers.Find(id);
-            if (createNewCustomer == null)
+            CreateNewEmployee createNewEmployee = db.CreateNewEmployees.Find(id);
+            if (createNewEmployee == null)
             {
                 return HttpNotFound();
             }
-            return View(createNewCustomer);
+            return View(createNewEmployee);
         }
 
-        // POST: CreateNewCustomers/Delete/5
+        // POST: CreateNewEmployees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CreateNewCustomer createNewCustomer = db.CreateNewCustomers.Find(id);
-            db.CreateNewCustomers.Remove(createNewCustomer);
+            CreateNewEmployee createNewEmployee = db.CreateNewEmployees.Find(id);
+            db.CreateNewEmployees.Remove(createNewEmployee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -124,6 +124,7 @@ namespace TrashCollector.Controllers
             }
             base.Dispose(disposing);
         }
+
         //Login
         public ActionResult Login()
         {
@@ -131,13 +132,13 @@ namespace TrashCollector.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(CreateNewCustomer createNewCustomer)
+        public ActionResult Login(CreateNewEmployee createNewEmployee)
         {
-            var newCustomer = db.CreateNewCustomers.Single(e => e.Username == createNewCustomer.Username && e.Password == createNewCustomer.Password);
-            if (newCustomer != null)
+            var newEmployee = db.CreateNewEmployees.Single(e => e.Username == createNewEmployee.Username && e.Password == createNewEmployee.Password);
+            if (newEmployee != null)
             {
-                Session["Id"] = newCustomer.Id.ToString();
-                Session["Username"] = newCustomer.Username.ToString();
+                Session["Id"] = newEmployee.Id.ToString();
+                Session["Username"] = newEmployee.Username.ToString();
                 return RedirectToAction("LoggedIn");
             }
             else
@@ -147,7 +148,7 @@ namespace TrashCollector.Controllers
             return View();
         }
 
-       public ActionResult LoggedIn()
+        public ActionResult LoggedIn()
         {
             if (Session["Id"] != null)
             {
