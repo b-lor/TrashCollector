@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,6 +19,28 @@ namespace TrashCollector
     {
         public Task SendAsync(IdentityMessage message)
         {
+            var emailMessage = new MailMessage
+            {
+                From = new MailAddress("email@gmail.com", "Trash Collector"),
+                Subject = message.Subject,
+                Body = message.Body,
+                IsBodyHtml = true
+            };
+
+            emailMessage.To.Add(message.Destination);
+
+            try
+            {
+                var client = new SmtpClient();
+                return client.SendMailAsync(emailMessage);
+            }
+            catch
+            {
+                return Task.FromResult(0);
+
+            }
+
+
             // Plug in your email service here to send an email.
             return Task.FromResult(0);
         }
