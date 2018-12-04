@@ -8,6 +8,7 @@ namespace TrashCollector.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             return View();
@@ -26,5 +27,6 @@ namespace TrashCollector.Controllers
 
             return View();
         }
+
     }
 }

@@ -35,5 +35,7 @@ namespace TrashCollector.Models
         public DbSet<CreateNewCustomer> CreateNewCustomers { get; set; }
         public DbSet<CreateNewEmployee> CreateNewEmployees { get; set; }
 
+
+
     }
 }

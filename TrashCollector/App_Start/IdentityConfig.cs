@@ -21,7 +21,7 @@ namespace TrashCollector
         {
             var emailMessage = new MailMessage
             {
-                From = new MailAddress("email@gmail.com", "Trash Collector"),
+                From = new MailAddress("testemaildevcodecamp@gmail.com", "Trash Collector Demo"),
                 Subject = message.Subject,
                 Body = message.Body,
                 IsBodyHtml = true
