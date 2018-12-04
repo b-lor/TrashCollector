@@ -36,9 +36,9 @@ namespace TrashCollector
 
                 var user = new ApplicationUser();
                 user.UserName = "bill";
-                user.Email = "bill@bill.bill";
+                user.Email = "bill@bill.com";
 
-                string userPWD = "bill123$";
+                string userPWD = "Bill123$";
 
                 var chkUser = UserManager.Create(user, userPWD);
 
