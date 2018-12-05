@@ -176,8 +176,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CreateNewCustomersController.cs" />
-    <Compile Include="Controllers\CreateNewEmployeesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,27 +185,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811301657378_CustomerAndEmployee.cs" />
-    <Compile Include="Migrations\201811301657378_CustomerAndEmployee.Designer.cs">
-      <DependentUpon>201811301657378_CustomerAndEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812031720551_CreateCustomer.cs" />
-    <Compile Include="Migrations\201812031720551_CreateCustomer.Designer.cs">
-      <DependentUpon>201812031720551_CreateCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812031723554_CreateNewCustomer.cs" />
-    <Compile Include="Migrations\201812031723554_CreateNewCustomer.Designer.cs">
-      <DependentUpon>201812031723554_CreateNewCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812031758550_CreateNewEmployee.cs" />
-    <Compile Include="Migrations\201812031758550_CreateNewEmployee.Designer.cs">
-      <DependentUpon>201812031758550_CreateNewEmployee.cs</DependentUpon>
+    <Compile Include="Migrations\201812050438199_Days.cs" />
+    <Compile Include="Migrations\201812050438199_Days.Designer.cs">
+      <DependentUpon>201812050438199_Days.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CreateNewCustomer.cs" />
-    <Compile Include="Models\CreateNewEmployee.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DayOfWeek.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -309,21 +294,6 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Customers\New.cshtml" />
-    <Content Include="Views\CreateNewCustomers\Create.cshtml" />
-    <Content Include="Views\CreateNewCustomers\Delete.cshtml" />
-    <Content Include="Views\CreateNewCustomers\Details.cshtml" />
-    <Content Include="Views\CreateNewCustomers\Edit.cshtml" />
-    <Content Include="Views\CreateNewCustomers\Index.cshtml" />
-    <Content Include="Views\CreateNewCustomers\Login.cshtml" />
-    <Content Include="Views\CreateNewCustomers\LoggedIn.cshtml" />
-    <Content Include="Views\CreateNewEmployees\Create.cshtml" />
-    <Content Include="Views\CreateNewEmployees\Delete.cshtml" />
-    <Content Include="Views\CreateNewEmployees\Details.cshtml" />
-    <Content Include="Views\CreateNewEmployees\Edit.cshtml" />
-    <Content Include="Views\CreateNewEmployees\Index.cshtml" />
-    <Content Include="Views\CreateNewEmployees\Login.cshtml" />
-    <Content Include="Views\CreateNewEmployees\LoggedIn.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -336,6 +306,10 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Customers\LoggedIn.cshtml" />
+    <Content Include="Views\Customers\Login.cshtml" />
+    <Content Include="Views\Employees\LoggedIn.cshtml" />
+    <Content Include="Views\Employees\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -346,24 +320,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811301657378_CustomerAndEmployee.resx">
-      <DependentUpon>201811301657378_CustomerAndEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812031720551_CreateCustomer.resx">
-      <DependentUpon>201812031720551_CreateCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812031723554_CreateNewCustomer.resx">
-      <DependentUpon>201812031723554_CreateNewCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812031758550_CreateNewEmployee.resx">
-      <DependentUpon>201812031758550_CreateNewEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812050438199_Days.resx">
+      <DependentUpon>201812050438199_Days.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

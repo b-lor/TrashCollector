@@ -128,5 +128,40 @@ namespace TrashCollector.Controllers
         {
             return View();
         }
+
+        //Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Customer createNewCustomer)
+        {
+            var newCustomer = db.Customer.Single(e => e.Username == createNewCustomer.Username && e.Password == createNewCustomer.Password);
+            if (newCustomer != null)
+            {
+                Session["Id"] = newCustomer.Id.ToString();
+                Session["Username"] = newCustomer.Username.ToString();
+                return RedirectToAction("LoggedIn");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Username or Password is wrong");
+            }
+            return View();
+        }
+
+        public ActionResult LoggedIn()
+        {
+            if (Session["Id"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
     }
 }

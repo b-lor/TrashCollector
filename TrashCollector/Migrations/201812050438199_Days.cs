@@ -3,7 +3,7 @@ namespace TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CustomerAndEmployee : DbMigration
+    public partial class Days : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,26 @@ namespace TrashCollector.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        Address1 = c.String(nullable: false),
+                        Address2 = c.String(),
+                        City = c.String(nullable: false),
+                        State = c.String(nullable: false),
+                        ZipCode = c.Int(nullable: false),
+                        Username = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Password = c.String(nullable: false),
+                        ConfirmPassword = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.DayOfWeeks",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Day = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -21,7 +40,13 @@ namespace TrashCollector.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        ZipCode = c.Int(nullable: false),
+                        Username = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Password = c.String(nullable: false),
+                        ConfirmPassword = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -113,6 +138,7 @@ namespace TrashCollector.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Employees");
+            DropTable("dbo.DayOfWeeks");
             DropTable("dbo.Customers");
         }
     }

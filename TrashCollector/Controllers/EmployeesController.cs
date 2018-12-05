@@ -123,5 +123,40 @@ namespace TrashCollector.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Employee createNewEmployee)
+        {
+            var newEmployee = db.Employee.Single(e => e.Username == createNewEmployee.Username && e.Password == createNewEmployee.Password);
+            if (newEmployee != null)
+            {
+                Session["Id"] = newEmployee.Id.ToString();
+                Session["Username"] = newEmployee.Username.ToString();
+                return RedirectToAction("LoggedIn");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Username or Password is wrong");
+            }
+            return View();
+        }
+
+        public ActionResult LoggedIn()
+        {
+            if (Session["Id"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
     }
 }
